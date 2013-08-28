@@ -1,6 +1,6 @@
 name = FishyItems
 version = 0.0.2
 author = nosefish
-main-class = de.nosefish.fishyitems.FishyItems
+main-class = net.gmx.nosefish.fishyitems.FishyItems
 dependencies = FishyLib
 isLibrary = false
