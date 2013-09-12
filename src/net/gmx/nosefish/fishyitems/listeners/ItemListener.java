@@ -46,8 +46,8 @@ public class ItemListener implements PluginListener, TaskOwner {
 	public void onItemUse(ItemUseHook hook) {
 		Player player = hook.getPlayer();
 		int itemInHand = hook.getItem().getId();
-		FishyItems.logger.fine("onItemUse " + itemInHand);
 		if (itemUseForbidden(player, itemInHand)) {
+			FishyItems.logger.logInfo(player.getName() + " tried to use forbidden item " + itemInHand);
 			hook.setCanceled();
 		}
 	}
@@ -56,8 +56,8 @@ public class ItemListener implements PluginListener, TaskOwner {
     public void onBlockPlace(BlockPlaceHook hook) {
 		Player player = hook.getPlayer();
 		int itemInHand = hook.getBlockPlaced().getTypeId();
-		FishyItems.logger.fine("onBlockPlace " + itemInHand);
 		if (itemUseForbidden(player, itemInHand)) {
+			FishyItems.logger.logInfo(player.getName() + " tried to use forbidden item " + itemInHand);
 			hook.setCanceled();
 		}
     }
@@ -91,6 +91,7 @@ public class ItemListener implements PluginListener, TaskOwner {
 				Key.ITEM_DROP_BLACKLIST, id))
 				&& !properties.hasPermission(Key.ITEM_DROP_PERM, player, id);
 		if (deny) {
+			FishyItems.logger.logInfo(player.getName() + " tried to drop forpidden item " + id);
 			messagePlayer(player,Colors.RED
 					+ properties.getString(world, Key.ITEM_DROP_MESSAGE));
 			hook.setCanceled();

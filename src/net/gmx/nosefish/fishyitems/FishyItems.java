@@ -5,7 +5,6 @@ package net.gmx.nosefish.fishyitems;
 import net.gmx.nosefish.fishylib.properties.Properties;
 
 import net.canarymod.Canary;
-import net.canarymod.logger.CanaryLevel;
 import net.canarymod.logger.Logman;
 import net.canarymod.plugin.Plugin;
 import net.canarymod.tasks.TaskOwner;
@@ -34,14 +33,9 @@ public class FishyItems extends Plugin implements TaskOwner {
 
 	@Override
 	public boolean enable() {
-		//logger = new net.gmx.nosefish.fishylib.logger.Logman(getName());
 		logger = getLogman();
 		properties = new Properties(this);
 		properties.addMissingKeys(Key.getAllKeys());
-		if (properties.isDebug()) {
-			logger.logInfo("Debug output enabled.");
-			logger.setLevel(CanaryLevel.FINE);
-		}
 		registerListeners();
 		return true;
 	}
