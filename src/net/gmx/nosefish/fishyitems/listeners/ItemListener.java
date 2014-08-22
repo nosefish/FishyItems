@@ -47,7 +47,7 @@ public class ItemListener implements PluginListener, TaskOwner {
 		Player player = hook.getPlayer();
 		int itemInHand = hook.getItem().getId();
 		if (itemUseForbidden(player, itemInHand)) {
-			FishyItems.logger.logInfo(player.getName() + " tried to use forbidden item " + itemInHand);
+			FishyItems.logger.info(player.getName() + " tried to use forbidden item " + itemInHand);
 			hook.setCanceled();
 		}
 	}
@@ -57,7 +57,7 @@ public class ItemListener implements PluginListener, TaskOwner {
 		Player player = hook.getPlayer();
 		int itemInHand = hook.getBlockPlaced().getTypeId();
 		if (itemUseForbidden(player, itemInHand)) {
-			FishyItems.logger.logInfo(player.getName() + " tried to use forbidden item " + itemInHand);
+			FishyItems.logger.info(player.getName() + " tried to use forbidden item " + itemInHand);
 			hook.setCanceled();
 		}
     }
@@ -86,12 +86,12 @@ public class ItemListener implements PluginListener, TaskOwner {
 			return;
 		}
 		int id = hook.getItem().getItem().getId();
-		FishyItems.logger.fine("onItemDrop " + id);
+		FishyItems.logger.debug("onItemDrop " + id);
 		boolean deny = (properties.containsInteger(world,
 				Key.ITEM_DROP_BLACKLIST, id))
 				&& !properties.hasPermission(Key.ITEM_DROP_PERM, player, id);
 		if (deny) {
-			FishyItems.logger.logInfo(player.getName() + " tried to drop forpidden item " + id);
+			FishyItems.logger.info(player.getName() + " tried to drop forpidden item " + id);
 			messagePlayer(player,Colors.RED
 					+ properties.getString(world, Key.ITEM_DROP_MESSAGE));
 			hook.setCanceled();
@@ -106,7 +106,7 @@ public class ItemListener implements PluginListener, TaskOwner {
 			return;
 		}
 		int id = hook.getItem().getItem().getId();
-		FishyItems.logger.fine("onItemPickUp " + id);
+		FishyItems.logger.debug("onItemPickUp " + id);
 		boolean deny = (properties.containsInteger(world,
 				Key.ITEM_PICKUP_BLACKLIST, id))
 				&& !properties.hasPermission(Key.ITEM_PICKUP_PERM, player, id);
