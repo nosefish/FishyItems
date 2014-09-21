@@ -27,15 +27,12 @@ import net.gmx.nosefish.fishyitems.properties.Key;
  * 
  */
 public class ItemListener implements PluginListener, TaskOwner {
-	private Properties properties;
-	private Set<Player> noSpam;
+	private final Properties properties;
+	private final Set<Player> noSpam;
 	private final long NOSPAMTIMEOUTMILLIS = 1000;
 	
 	/**
 	 * Constructor
-	 * 
-	 * @param fishyShield
-	 *            the plugin instantiating this <code>PluginListener</code>
 	 */
 	public ItemListener() {
 		this.properties = FishyItems.properties;
